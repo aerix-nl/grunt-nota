@@ -11,19 +11,21 @@
 
   module.exports = function(grunt) {
     return grunt.registerMultiTask('nota', 'Excretes pretty PDF documents', function() {
-      var done, helper, job, nota, template;
-      nota = new Nota(Nota.defaults);
-      helper = new Nota.Helper(nota.logging);
+      var done, helper, job, nota, template, templatePath;
+      nota = new Nota(Nota.defaults, new Nota.LoggingChannels());
+      helper = new Nota.TemplateHelper(nota.logging);
+      templatePath = Path.resolve(__dirname, '../../..');
       try {
-        template = helper.getTemplateDefinition(__dirname);
+        template = helper.getTemplateDefinition('/Users/felix/Aerix/Repositories/Nota-cli/templates/example-invoice/');
       } catch (_error) {
         template = {
-          path: __dirname
+          path: templatePath
         };
       }
+      console.log(this);
       job = {
-        dataPath: grunt.option('data') || definition.exampleData,
-        outputPath: grunt.option('output') || Path.join(__dirname, definition.defaultFilename)
+        dataPath: grunt.option('data') || template.exampleData,
+        outputPath: grunt.option('output') || Path.join(templatePath, template.defaultFilename)
       };
       grunt.log.writeln("=== Nota ===");
       grunt.log.writeln("templatePath:  " + templatePath);

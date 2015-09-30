@@ -6,18 +6,21 @@ Nota          = require('nota')
 module.exports = ( grunt ) ->
 
   grunt.registerMultiTask 'nota', 'Excretes pretty PDF documents', ( ) ->
-    nota          = new Nota(Nota.defaults)
-    helper        = new Nota.Helper(nota.logging)
+    nota          = new Nota Nota.defaults, new Nota.LoggingChannels()
+    helper        = new Nota.TemplateHelper(nota.logging)
+    templatePath  = Path.resolve(__dirname, '../../..')
     try
-      template    = helper.getTemplateDefinition __dirname
+      template    = helper.getTemplateDefinition '/Users/felix/Aerix/Repositories/Nota-cli/templates/example-invoice/' # templatePath
     catch
       template = {
-        path: __dirname
+        path: templatePath
       }
 
+    console.log @
+
     job = {
-      dataPath:         grunt.option('data')     or definition.exampleData
-      outputPath:       grunt.option('output')   or Path.join(__dirname, definition.defaultFilename)
+      dataPath:         grunt.option('data')     or template.exampleData
+      outputPath:       grunt.option('output')   or Path.join(templatePath, template.defaultFilename)
     }
 
     grunt.log.writeln("=== Nota ===")
