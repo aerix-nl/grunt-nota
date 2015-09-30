@@ -1,0 +1,10 @@
+.DS_Store
+
+node_modules
+
+# Dev related stuff
+/grunt-nota.sublime-project
+/grunt-nota.sublime-workspace
+
+/*.pdf
+npm-debug.log

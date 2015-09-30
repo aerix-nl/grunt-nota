@@ -1,0 +1,42 @@
+{
+  "name": "grunt-nota",
+  "description": "Grunt task to render PDF documents",
+  "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "https://github.com/aerix/grunt-nota",
+  "author": [
+    "Felix Akkermans <code@felixakkermans.com>",
+    "Joost Verdoorn <jpverdoorn@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aerix/grunt-nota.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aerix/grunt-nota/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/aerix/grunt-nota/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "nota": "~2.0.0",
+    "open": "~0.0.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  }
+}
